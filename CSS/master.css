@@ -2,3 +2,31 @@ nav{
     background-color: black;
 }
 
+a{
+    color: white;
+}
+
+#container{
+    margin: auto;
+
+}
+.head{
+    margin: auto;
+    width:50%;    
+    text-align: center;
+    padding-top: 30px;
+}
+
+.buttons{
+    margin: auto;
+    width: 50%;
+    text-align: center;
+}
+.home-button{
+    padding-top:20px;
+}
+
+.btn{
+    padding: 10px;
+    width: 30%;
+}
