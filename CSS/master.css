@@ -23,7 +23,11 @@ a{
     text-align: center;
 }
 .home-button{
-    padding-top:20px;
+    padding-top: 20px;
+}
+
+.guest-button{
+    padding-top: 20px;
 }
 
 .btn{
