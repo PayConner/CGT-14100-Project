@@ -31,6 +31,23 @@ a{
 }
 
 .btn{
+
+    
     padding: 10px;
     width: 30%;
+}
+
+.google-map {
+    padding-bottom: 50%;
+    margin: auto;
+    position: relative;
+}
+
+.google-map iframe {
+    margin: auto;
+    height: 50%;
+    width: 50%;
+    left: 0;
+    top: 0;
+    position: absolute;
 }
