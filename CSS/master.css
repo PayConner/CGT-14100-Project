@@ -1,5 +1,6 @@
 nav{
     background-color: black;
+    width: 100%;
 }
 
 a{
@@ -11,9 +12,13 @@ a{
 
 }
 .head{
+    display:grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 0px;
     margin: auto;
-    width:50%;    
-    text-align: center;
+    width:25%;    
+    text-align: left;
     padding-top: 30px;
 }
 
@@ -31,10 +36,8 @@ a{
 }
 
 .btn{
-
-    
     padding: 10px;
-    width: 30%;
+    width: 10em;
 }
 
 .google-map {
@@ -50,4 +53,8 @@ a{
     left: 0;
     top: 0;
     position: absolute;
+}
+
+.clipart{
+    width: 7em;
 }
