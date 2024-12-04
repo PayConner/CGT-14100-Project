@@ -42,7 +42,7 @@
             <div class="google-map">
                 <gmp-map center="40.424, -86.921" zoom="15" map-id="example-map" style="height: 500px; width: 700px; border: solid 5px #cccccc">
                     <gmp-advanced-marker position="40.424, -86.921" title="Example" gmp-clickable>
-                        <img class="vending-icon" src="images/vending_clipart.png"/>
+                        <img class="vending-icon" src="images/vending_clipart.png" />
                     </gmp-advanced-marker>
 
                 </gmp-map>
@@ -50,19 +50,15 @@
 
             <div class="interaction">
 
-                <div class="address">
-                    <label for="address">
-                        New machine's address:
-                        <input id="latlng" type = "text" placeholder="123 Example St..." />
+                <div class="name">
+                    <label for="machine-name">
+                        <input id="machine-name" type="text" placeholder="Machine Name" />
                     </label>
                 </div>
 
-                <p>OR</p>
-
-                <div class="coordinates">
-                    <label for="coordinates">
-                        New machine's coordinates:
-                        <input id="coordinates" name="coordinates" placeholder="10.0000,10.0000" />
+                <div class="description">
+                    <label for="machine-description">
+                        <input id="machine-description" type="text" placeholder="Description" />
                     </label>
                 </div>
 
@@ -77,15 +73,30 @@
                     </label>
                 </div>
 
+                <div class="address">
+                    <label for="address">
+                        New machine's address:
+                        <input id="address" type="text" placeholder="123 Example St..." />
+                    </label>
+                </div>
+
+                <p>OR</p>
+
+                <div class="coordinates">
+                    <label for="latlng">
+                        New machine's coordinates:
+                        <input id="latlng" name="coordinates" placeholder="10.0000,10.0000" />
+                    </label>
+                </div>
+
                 <div class="submit">
-                    <input id="submit" type="button" class="btn btn-primary" value="Add to Network"/>
+                    <input id="submit" type="button" class="btn btn-primary" value="Add to Network" />
                 </div>
 
             </div>
         </div>
     </div>
 
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2MuQAvsFqfGdHorn9lFD18tgf3CM_LFI&callback=initMap&v=weekly&solution_channel=GMP_CCS_geolocation_v2" defer></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2MuQAvsFqfGdHorn9lFD18tgf3CM_LFI&callback=initMap&libraries=marker&v=beta&solution_channel=GMP_CCS_infowindows_v2" defer></script>
 </body>
 </html>
