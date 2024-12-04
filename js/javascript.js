@@ -1,80 +1,57 @@
 let map, infoWindow;
+let machineName, machineDescription, machineType, machineCoords;
+let contentString;
+let markers = [];
 
+//Initializes the map and awaits button inputs
 async function initMap() {
-    const contentString = `
-    <div>
-        <h1>Example</h1>
-        <div>
-            <p>
-                This is an example vending machine.
-            </p>
-        </div>
-    </div>`;
-
-    const infoWindow = new google.maps.InfoWindow({
-        content: contentString,
-        ariaLabel: "Example",
-    });
-
-    const marker = document.querySelector('gmp-advanced-marker');
-    marker.addEventListener('gmp-click', () => {
-        infoWindow.open({ anchor: marker });
-    });
-
-    const locationButton = document.createElement("button");
-
     const geocoder = new google.maps.Geocoder();
 
-    const map = document.querySelector('gmp-map').innerMap;
+    map = document.querySelector('gmp-map').innerMap;
+    infoWindow = new google.maps.InfoWindow({
+        content: contentString,
+    });
 
-    locationButton.textContent = "Pan to Current Location";
-    locationButton.classList.add("custom-map-control-button");
-    map.controls[google.maps.ControlPosition.TOP_CENTER].push(
-        locationButton
-    );
-    locationButton.addEventListener("click", () => {
-        // Try HTML5 geolocation.
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    const pos = {
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude,
-                    };
-
-                    infoWindow.setPosition(pos);
-                    infoWindow.setContent("Location found.");
-                    infoWindow.open(map);
-                    map.setCenter(pos);
-                },
-                () => {
-                    handleLocationError(true, infoWindow, map.getCenter());
-                }
-            );
-        } else {
-            // Browser doesn't support Geolocation
-            handleLocationError(false, infoWindow, map.getCenter());
-        }
-    }); 
-
+    // When the Add a Machine button is clicked
     document.getElementById('submit').addEventListener('click', () => {
+
+        machineName = document.getElementById('machine-name').value;
+        machineDescription = document.getElementById('machine-description').value;
+        machineType = document.getElementById('machine-type').value;
+        machineCoords = document.getElementById('latlng').value;
+
+        // Makes sure both input fields are filled out
+        if (!machineName || !machineDescription) {
+            alert('Please fill out both the Title and Description fields.');
+            return;
+        }
+
+        // Makes sure the coordinates field is filled out
+        if (!machineCoords) {
+            alert('Please provide the latitude and longitude coordinates.');
+            return;
+        }
+
+        // What the infoWindow will display, with the input values interpolated
+        contentString =
+            `<div>
+                    <h1>${machineName}</h1>
+                <div>
+                    <p>
+                        ${machineDescription}
+                    </p>
+                    <p>
+                        Machine type: <b>${machineType}</b>
+                    </p>
+                </div>
+            </div>`;
+
         geocodeLatLng(geocoder, map, infoWindow);
     });
 }
 
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-    infoWindow.setPosition(pos);
-    infoWindow.setContent(
-        browserHasGeolocation
-            ? "Error: The Geolocation service failed."
-            : "Error: Your browser doesn't support geolocation."
-    );
-    infoWindow.open(map);
-}
-
 async function geocodeLatLng(geocoder, map, infoWindow) {
-    const input = document.getElementById('latlng').value;
-    const latlngStr = input.split(',', 2);
+    const latlngStr = machineCoords.split(',', 2);
     const latlng = {
         lat: parseFloat(latlngStr[0]),
         lng: parseFloat(latlngStr[1]),
@@ -82,12 +59,23 @@ async function geocodeLatLng(geocoder, map, infoWindow) {
 
     try {
         const response = await geocoder.geocode({ location: latlng });
-        const marker = document.querySelector('gmp-advanced-marker');
+        const marker = new google.maps.Marker({
+            position: latlng,
+            map: map,
+            icon: {
+                url: 'images/vending_clipart.png',
+                scaledSize: new google.maps.Size(25, 25),
+            },
+        });
 
-        map.setZoom(11);
-        marker.position = latlng;
-        infoWindow.setContent(response.results[0].formatted_address);
-        infoWindow.open({ anchor: marker });
+        // Adds the marker to an array of all the markers.
+        markers.push(marker);
+
+        const markerContent = (contentString + response.results[0].formatted_address);
+        google.maps.event.addListener(marker, 'click', () => {
+            infoWindow.setContent(markerContent);
+            infoWindow.open(map, marker);
+        });
     } catch (e) {
         window.alert(`Geocoder failed due to: ${e}`);
     }

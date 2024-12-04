@@ -41,10 +41,6 @@
             <!--Map/Home screen-->
             <div class="google-map">
                 <gmp-map center="40.424, -86.921" zoom="15" map-id="example-map" style="height: 500px; width: 700px; border: solid 5px #cccccc">
-                    <gmp-advanced-marker position="40.424, -86.921" title="Example" gmp-clickable>
-                        <img class="vending-icon" src="images/vending_clipart.png" />
-                    </gmp-advanced-marker>
-
                 </gmp-map>
             </div>
 
@@ -52,45 +48,36 @@
 
                 <div class="name">
                     <label for="machine-name">
-                        <input id="machine-name" type="text" placeholder="Machine Name" />
+                        <input name="machine-name" id="machine-name" type="text" placeholder="Machine Name" />
                     </label>
                 </div>
 
                 <div class="description">
                     <label for="machine-description">
-                        <input id="machine-description" type="text" placeholder="Description" />
+                        <input name="machine-description" id="machine-description" type="text" placeholder="Description" />
                     </label>
                 </div>
 
                 <div class="new-machine-type-dropdown">
                     <label for="new-machine-type">
                         Select the machine's type:
-                        <select name="new-machine-type" id="new-machine-type">
-                            <option value="snacks">Snacks</option>
-                            <option value="drinks">Drinks</option>
-                            <option value="pharmacy">Pharmacy</option>
+                        <select name="new-machine-type" id="machine-type">
+                            <option value="Snacks">Snacks</option>
+                            <option value="Drinks">Drinks</option>
+                            <option value="Pharmacy">Pharmacy</option>
                         </select>
                     </label>
                 </div>
 
-                <div class="address">
-                    <label for="address">
-                        New machine's address:
-                        <input id="address" type="text" placeholder="123 Example St..." />
-                    </label>
-                </div>
-
-                <p>OR</p>
-
                 <div class="coordinates">
                     <label for="latlng">
                         New machine's coordinates:
-                        <input id="latlng" name="coordinates" placeholder="10.0000,10.0000" />
+                        <input id="latlng" name="coordinates" placeholder="10.0000,10.0000"/>
                     </label>
                 </div>
 
                 <div class="submit">
-                    <input id="submit" type="button" class="btn btn-primary" value="Add to Network" />
+                    <input id="submit" type="submit" class="btn btn-primary" value="Add to Network" />
                 </div>
 
             </div>

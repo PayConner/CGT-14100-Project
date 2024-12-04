@@ -77,6 +77,12 @@ a {
     width: 15em;
 }
 
+.btn-search {
+    padding-left: 10px;
+    width: 5em;
+
+}
+
 #content-label {
     display: inline-block;
     font-size: 25px;
