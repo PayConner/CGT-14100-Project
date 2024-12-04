@@ -35,7 +35,9 @@
             <!--Map/Home screen-->
             <div class="google-map">
                 <gmp-map center="40.424, -86.921" zoom="15" map-id="example-map" style="height: 500px; width: 700px; border: solid 5px #cccccc">
-                    <gmp-advanced-marker position="40.424, -86.921" title="Example" gmp-clickable></gmp-advanced-marker>
+                    <gmp-advanced-marker position="40.424, -86.921" title="Example" gmp-clickable>
+                        <img class="vending-icon" src="images/vending_clipart.png" />
+                    </gmp-advanced-marker>
                 </gmp-map>
             </div>
 
@@ -60,7 +62,7 @@
                 </div>
 
                 <div class="add-button">
-                    <a href="addmachine.html" class="btn btn-primary">Add a Vending Machine</a>
+                    <a id="add-button" href="addmachine.html" class="btn btn-primary">Add a Vending Machine</a>
                 </div>
             </div>
         </div>
@@ -68,5 +70,6 @@
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2MuQAvsFqfGdHorn9lFD18tgf3CM_LFI&callback=initMap&v=weekly&solution_channel=GMP_CCS_geolocation_v2" defer></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2MuQAvsFqfGdHorn9lFD18tgf3CM_LFI&callback=initMap&libraries=marker&v=beta&solution_channel=GMP_CCS_infowindows_v2" defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2MuQAvsFqfGdHorn9lFD18tgf3CM_LFI&callback=initMap&libraries=marker&v=beta&solution_channel=GMP_CCS_reversegeocoding_v3" defer></script>
 </body>
 </html>

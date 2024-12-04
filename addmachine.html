@@ -35,7 +35,10 @@
             <!--Map/Home screen-->
             <div class="google-map">
                 <gmp-map center="40.424, -86.921" zoom="15" map-id="example-map" style="height: 500px; width: 700px; border: solid 5px #cccccc">
-                    <gmp-advanced-marker position="40.424, -86.921" title="Example" gmp-clickable></gmp-advanced-marker>
+                    <gmp-advanced-marker position="40.424, -86.921" title="Example" gmp-clickable>
+                        <img class="vending-icon" src="images/vending_clipart.png"/>
+                    </gmp-advanced-marker>
+
                 </gmp-map>
             </div>
 
@@ -44,7 +47,7 @@
                 <div class="address">
                     <label for="address">
                         New machine's address:
-                        <input name="address" placeholder="123 Example St..." />
+                        <input id="latlng" type = "text" placeholder="123 Example St..." />
                     </label>
                 </div>
 
@@ -53,7 +56,7 @@
                 <div class="coordinates">
                     <label for="coordinates">
                         New machine's coordinates:
-                        <input name="address" placeholder="10.0000,10.0000" />
+                        <input id="coordinates" name="coordinates" placeholder="10.0000,10.0000" />
                     </label>
                 </div>
 
@@ -68,8 +71,8 @@
                     </label>
                 </div>
 
-                <div class="add">
-                    <a href="" class="btn btn-primary">Add To Network</a>
+                <div class="submit">
+                    <input id="submit" type="button" class="btn btn-primary" value="Add to Network"/>
                 </div>
 
             </div>
