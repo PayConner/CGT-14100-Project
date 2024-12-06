@@ -18,6 +18,7 @@ async function initMap() {
     }
 
     infoWindow = new google.maps.InfoWindow();
+    initHardCodedMarkers();
 
     // Load markers from localStorage when the page loads
     loadMarkersFromStorage(map, infoWindow);
@@ -68,8 +69,6 @@ async function geocodeLatLng(geocoder, map, infoWindow, contentString, latlngStr
     };
 
     try {
-        const response = await geocoder.geocode({ location: latlng });
-
         const marker = new google.maps.Marker({
             position: latlng,
             map: map,
@@ -145,6 +144,111 @@ function saveMarkersToStorage() {
     localStorage.setItem('markers', JSON.stringify(markersToSave));
 }
 
+function initHardCodedMarkers() {
+    let walcMachine = new google.maps.Marker({
+        position: {
+            lat: 40.428082,
+            lng: -86.913757,
+        },
+        map: map,
+        icon: {
+            url: 'images/vending_clipart.png',
+            scaledSize: new google.maps.Size(25, 25),
+        },
+    });
+
+    let walcContent = `
+                <div>
+                    <h1>WALC Snack Vending Machine</h1>
+                    <div>
+                        <p>Snack vending machine in the Purdue Wilmeth Active Learning Center.</p>
+                        <p>Machine type: <b>Snacks</b></p>
+                    </div>
+                </div>`;
+
+    google.maps.event.addListener(walcMachine, 'click', () => {
+        infoWindow.setContent(walcContent);
+        infoWindow.open(map, walcMachine);
+    });
+
+    let corecMachine = new google.maps.Marker({
+        position: {
+            lat: 40.428329,
+            lng: -86.922423,
+        },
+        map: map,
+        icon: {
+            url: 'images/vending_clipart.png',
+            scaledSize: new google.maps.Size(25, 25),
+        },
+    });
+
+    let corecContent = `
+                <div>
+                    <h1>Co-Rec Drink Vending Machine</h1>
+                    <div>
+                        <p>Sports drink vending machine in the France A. Cordova Recreational Center.</p>
+                        <p>Machine type: <b>Drinks</b></p>
+                    </div>
+                </div>`;
+
+    google.maps.event.addListener(corecMachine, 'click', () => {
+        infoWindow.setContent(corecContent);
+        infoWindow.open(map, corecMachine);
+    });
+
+    let fordMachine = new google.maps.Marker({
+        position: {
+            lat: 40.432209,
+            lng: -86.919563,
+        },
+        map: map,
+        icon: {
+            url: 'images/vending_clipart.png',
+            scaledSize: new google.maps.Size(25, 25),
+        },
+    });
+
+    let fordContent = `
+                <div>
+                    <h1>Ford Dining Hall Pharmacy Vending Machine</h1>
+                    <div>
+                        <p>Pharmacy vending machine in the lobby of the Ford Dining Hall.</p>
+                        <p>Machine type: <b>Pharmacy</b></p>
+                    </div>
+                </div>`;
+    
+    google.maps.event.addListener(fordMachine, 'click', () => {
+        infoWindow.setContent(fordContent);
+        infoWindow.open(map, fordMachine);
+    });
+
+    let lwsnMachine = new google.maps.Marker({
+        position: {
+            lat: 40.427782,
+            lng: -86.917122,
+        },
+        map: map,
+        icon: {
+            url: 'images/vending_clipart.png',
+            scaledSize: new google.maps.Size(25, 25),
+        },
+    });
+
+    let lswnContent = `
+                <div>
+                    <h1>Lawson Basement Vending Machine</h1>
+                    <div>
+                        <p>Drink vending machine in the basement of the Lawson Computer Science building.</p>
+                        <p>Machine type: <b>Drinks</b></p>
+                    </div>
+                </div>`;
+
+    google.maps.event.addListener(lwsnMachine, 'click', () => {
+        infoWindow.setContent(lswnContent);
+        infoWindow.open(map, lwsnMachine);
+    });
+}
+
 // Initialize the map when the page loads
 window.initMap = initMap;
-loadMarkersFromStorage(map, infoWindow);
