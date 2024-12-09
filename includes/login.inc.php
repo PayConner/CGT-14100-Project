@@ -1,9 +1,16 @@
 <?php
 
 if(isset($_POST["submit"])){
-    echo "It Works";
-}else{
-    header("location: ../signup.php");
-}
 
-?>
+    $uid = $_POST["uid"];
+    $pwd = $_POST["pwd"];
+
+    require_once 'dbh.inc.php';
+    require_once 'functions.inc.php';
+
+    loginUser($conn, $uid, $pwd);
+
+}else{
+    header("location: ../login.php");
+    exit();
+}
