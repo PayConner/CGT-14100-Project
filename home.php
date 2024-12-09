@@ -4,9 +4,9 @@ include('header.php');
 
         <div class="content">
             <!--Map/Home screen-->
-            <div class="google-map">
-                <gmp-map center="40.424, -86.921" zoom="15" map-id="map" style=" margins:auto; width: 50%; ;border: solid 5px #cccccc;">
-                </gmp-map>
+            <div class="map-container">
+              <gmp-map center="40.424, -86.921" zoom="15" map-id="map" style="border: solid 5px #cccccc;">
+              </gmp-map>
             </div>
 
             <div class="interaction">
@@ -29,13 +29,17 @@ include('header.php');
                         </select>
                     </label>
                 </div>
-
-                <div class="add-button">
-                    <a id="add-button" href="addmachine.php" class="btn btn-primary">Add a Vending Machine</a>
-                </div>
-                <div class="add-button">
-                  <a id="add-button" href="addmachine.php" class="btn btn-primary">Review a Vending Machine</a>
-                </div>
+                <?php
+              if(isset($_SESSION["useruid"])){
+                echo "<div class='add-button'>";
+                echo "<a id='add-button' href='addmachine.php' class='btn btn-primary add-button'>Add a Vending Machine</a>";
+                echo "<a id='add-button' href='reviewmachine.php' class='btn btn-primary add-button'>Review a Vending Machine</a>";
+                echo "</div>";
+              }
+              else{
+                echo "<p class='alert alert-primary' role='alert'>Please log in to Review or add new vending machines</p>";
+              }
+              ?>
             </div>
         </div>
     </div>

@@ -4,9 +4,9 @@ include('header.php');
 
         <div class="content">
             <!--Map/Home screen-->
-            <div class="google-map">
-                <gmp-map center="40.424, -86.921" zoom="15" map-id="map" style=" margins:auto; width: 50%; ;border: solid 5px #cccccc;">
-                </gmp-map>
+            <div class="map-container">
+              <gmp-map center="40.424, -86.921" zoom="15" map-id="map" style="border: solid 5px #cccccc;">
+              </gmp-map>
             </div>
 
             <div class="interaction">

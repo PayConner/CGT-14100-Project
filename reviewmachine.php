@@ -4,18 +4,20 @@ include('header.php');
 
         <div class="content">
             <!--Map/Home screen-->
-            <div class="google-map">
-                <gmp-map center="40.424, -86.921" zoom="15" map-id="example-map" style=" margins:auto; width: 50%; ;border: solid 5px #cccccc;">
-                    <gmp-advanced-marker position="40.424, -86.921" title="Example" gmp-clickable>
-                        <img class="vending-icon" src="images/vending_clipart.png" />
-                    </gmp-advanced-marker>
-
-                </gmp-map>
+            <div class="map-container">
+              <gmp-map center="40.424, -86.921" zoom="15" map-id="map" style="border: solid 5px #cccccc;">
+              </gmp-map>
             </div>
 
             <div class="interaction">
-                <p id="content-label">Placeholder Machine Name</p>
-                <p id="content-label" class="text-muted"><small>Placeholder Description</small></p>
+
+
+                <div class="review">
+                    <label for="review">
+                        Name of Machine:
+                        <textarea class="form-control" id="review" rows="4" placeholder="Please enter vending maching name here"></textarea>
+                    </label>
+                </div>
 
                 <div class="review">
                     <label for="review">
@@ -33,14 +35,14 @@ include('header.php');
                 </div>
 
                 <div class="submit">
-                    <input id="submit" type="button" class="btn btn-primary" value="Submit Review" onclick="submitScore()"/>
+                    <input id="submit" type="button" class="btn btn-primary" value="Submit Review" onclick="window.location.reload();"/>
                 </div>
 
             </div>
         </div>
     </div>
 </div>
-<script>
+<script>    
     document.querySelectorAll('.star-rating .bi-star').forEach(star => {
         star.addEventListener('click', function() {
             score = this.getAttribute('num');
